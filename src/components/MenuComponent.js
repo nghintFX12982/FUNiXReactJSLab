@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import DishDetail from "./DishdetailComponent";
 // import { Media } from "reactstrap";
 import {
   Card,
@@ -23,15 +24,7 @@ class Menu extends Component {
 
   renderDish(dish) {
     if (dish != null) {
-      return (
-        <Card>
-          <CardImg top src={dish.image} alt={dish.description} />
-          <CardBody>
-            <CardTitle>{dish.name}</CardTitle>
-            <CardText>{dish.description}</CardText>
-          </CardBody>
-        </Card>
-      );
+      return <DishDetail selectedDish={dish} />;
     } else {
       return <div></div>;
     }
@@ -54,11 +47,7 @@ class Menu extends Component {
     return (
       <div className="container">
         <div className="row">{menu}</div>
-        <div className="row">
-          <div className="col-12 col-md-5 m-1">
-            {this.renderDish(this.state.selectedDish)}
-          </div>
-        </div>
+        <div className="row">{this.renderDish(this.state.selectedDish)}</div>
       </div>
     );
   }
