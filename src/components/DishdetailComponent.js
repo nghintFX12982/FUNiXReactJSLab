@@ -1,14 +1,5 @@
 import React, { Component, useLayoutEffect } from "react";
-import {
-  Card,
-  CardImg,
-  CardImgOverlay,
-  CardText,
-  CardBody,
-  CardTitle,
-  ListGroup,
-  ListGroupItem,
-} from "reactstrap";
+import { Card, CardImg, CardText, CardBody, CardTitle } from "reactstrap";
 import dateFormat, { masks } from "dateformat";
 
 class DishDetail extends Component {
@@ -41,16 +32,22 @@ class DishDetail extends Component {
   }
 
   render() {
-    return (
-      <React.Fragment>
-        <div className="col-12 col-md-5 m-1">
-          {this.renderDish(this.props.selectedDish)}
+    if (this.props.dish) {
+      return (
+        <div className="container">
+          <div className="row">
+            <div className="col-12 col-md-5 m-1">
+              {this.renderDish(this.props.dish)}
+            </div>
+            <div className="col-12 col-md-5 m-1">
+              {this.renderComments(this.props.dish.comments)}
+            </div>
+          </div>
         </div>
-        <div className="col-12 col-md-5 m-1">
-          {this.renderComments(this.props.selectedDish.comments)}
-        </div>
-      </React.Fragment>
-    );
+      );
+    } else {
+      return <div></div>;
+    }
   }
 }
 
