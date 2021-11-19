@@ -1,3 +1,5 @@
+import Header from "./HeaderComponent";
+import Footer from "./FooterComponent";
 import React, { Component } from "react";
 import { Navbar, NavbarBrand } from "reactstrap";
 import Menu from "./MenuComponent";
@@ -20,11 +22,7 @@ class Main extends Component {
   render() {
     return (
       <div>
-        <Navbar dark color="primary">
-          <div className="container">
-            <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
-          </div>
-        </Navbar>
+        <Header />
 
         <Menu
           dishes={this.state.dishes}
@@ -38,6 +36,8 @@ class Main extends Component {
             )[0]
           }
         />
+
+        <Footer />
       </div>
     );
   }
