@@ -14,24 +14,38 @@ class Header extends Component {
   constructor(props) {
     super(props);
 
+    // this method will create a function from another function in class component
     this.toggleNav = this.toggleNav.bind(this);
     this.state = {
       isNavOpen: false,
     };
   }
 
+  // Annonymous function not need bind method
   toggleNav() {
     this.setState({
       isNavOpen: !this.state.isNavOpen,
     });
   }
 
+  // toggleNav = () => {
+  //   this.setState({
+  //     isNavOpen: !this.state.isNavOpen,
+  //   });
+  // };
+
   render() {
     return (
       <div>
+        {/* Navbar Section with React Route */}
+        {/* Navbar will expand from medium screen */}
+        {/* mr-auto will add margin right as much as necessary */}
+        {/* <Nav navbar> + <NavItem><NavLink className="nav-link"> will make navigation bar */}
+        {/* <NavbarToggler> + <Collapse navbar> will make navbar collapse */}
         <Navbar dark expand="md">
           <div className="container">
             <NavbarToggler onClick={this.toggleNav} />
+            {/* Brand */}
             <NavbarBrand className="mr-auto" href="/">
               <img
                 src="assets/images/logo.png"
@@ -40,6 +54,7 @@ class Header extends Component {
                 alt="Ristorante Con Fusion"
               />
             </NavbarBrand>
+            {/* Navigation bar */}
             <Collapse isOpen={this.state.isNavOpen} navbar>
               <Nav navbar>
                 <NavItem>
@@ -67,6 +82,7 @@ class Header extends Component {
             </Collapse>
           </div>
         </Navbar>
+        {/* Jumbotron Section */}
         <Jumbotron>
           <div className="container">
             <div className="row row-header">

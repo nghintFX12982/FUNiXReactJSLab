@@ -6,6 +6,7 @@ function Footer(props) {
     <div className="footer">
       <div className="container">
         <div className="row justify-content-center">
+          {/* Link Column */}
           <div className="col-4 offset-1 col-sm-2">
             <h5>Links</h5>
             <ul className="list-unstyled">
@@ -23,6 +24,7 @@ function Footer(props) {
               </li>
             </ul>
           </div>
+          {/* Address Column */}
           <div className="col-7 col-sm-5">
             <h5>Our Address</h5>
             <address>
@@ -40,6 +42,7 @@ function Footer(props) {
               <a href="mailto:confusion@food.net">confusion@food.net</a>
             </address>
           </div>
+          {/* Social Button Column */}
           <div className="col-12 col-sm-4 align-self-center">
             <div className="text-center">
               <a
@@ -78,6 +81,7 @@ function Footer(props) {
             </div>
           </div>
         </div>
+        {/* Copyright section */}
         <div className="row justify-content-center">
           <div className="col-auto">
             <p>© Copyright 2018 Ristorante Con Fusion</p>

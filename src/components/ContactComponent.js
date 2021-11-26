@@ -47,6 +47,7 @@ class Contact extends Component {
   render() {
     return (
       <div className="container">
+        {/* Breadcrumb Section */}
         <div className="row">
           <Breadcrumb>
             <BreadcrumbItem>
@@ -59,6 +60,7 @@ class Contact extends Component {
             <hr />
           </div>
         </div>
+        {/* Location Section */}
         <div className="row row-content">
           <div className="col-12">
             <h3>Location Information</h3>
@@ -105,6 +107,9 @@ class Contact extends Component {
             </div>
           </div>
         </div>
+        {/* When submiting change in iput value, handleInputChange() will be triggered to update state  */}
+        {/* Then, handleSubmit() will be triggered to console log result -> use JSON.stringify() to show object  */}
+        {/* Feedback Section */}
         <div className="row row-content">
           <div className="col-12">
             <h3>Send us Your FeedBack</h3>

@@ -6,7 +6,6 @@ import Contact from "./ContactComponent";
 import DishDetail from "./DishdetailComponent";
 import React, { Component } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import { Navbar, NavbarBrand } from "reactstrap";
 import { DISHES } from "../shared/dishes";
 import { COMMENTS } from "../shared/comments";
 import { PROMOTIONS } from "../shared/promotions";
@@ -24,6 +23,8 @@ class Main extends Component {
   }
 
   render() {
+    // This component will be called if path matches "/home"
+    // Home component is imported from HomeComponent.js
     const HomPage = () => {
       return (
         <Home
@@ -34,10 +35,13 @@ class Main extends Component {
       );
     };
 
+    // This component will be called if path matches "/menu/:dishid"
+    // DishDetail is imported from DishdetailComponent.js
     const DishWithId = ({ match }) => {
       return (
         <DishDetail
           dish={
+            // Filter the dish that has ID matches params :dishID
             this.state.dishes.filter(
               (dish) => dish.id === parseInt(match.params.dishId, 10)
             )[0]
@@ -54,6 +58,7 @@ class Main extends Component {
         <Header />
         <Switch>
           <Route path="/home" component={HomPage} />
+          {/* if path is "/menu", component Menu with props.dishes will be called */}
           <Route
             exact
             path="/menu"
@@ -61,6 +66,7 @@ class Main extends Component {
           />
           <Route path="/menu/:dishId" component={DishWithId} />
           <Route exact path="/contactus" component={Contact} />
+          {/* Any paths not match the above will redirect to "/home" */}
           <Redirect to="/home" />
         </Switch>
         <Footer />

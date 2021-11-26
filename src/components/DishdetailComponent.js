@@ -11,6 +11,7 @@ import {
 import { Link } from "react-router-dom";
 import dateFormat, { masks } from "dateformat";
 
+// Presentation Component
 function RenderDish({ dish }) {
   return (
     <Card>
@@ -39,10 +40,13 @@ function RenderComments({ comments }) {
   );
 }
 
+// Container Component
 const DishDetail = (props) => {
+  // If dish is not undefined, will return detail of dish
   if (props.dish) {
     return (
       <div className="container">
+        {/* Breadcrumb Section */}
         <div className="row">
           <Breadcrumb>
             <BreadcrumbItem>
@@ -55,6 +59,7 @@ const DishDetail = (props) => {
             <hr />
           </div>
         </div>
+        {/* Dish & Comment Section */}
         <div className="row">
           <div className="col-12 col-md-5 m-1">
             <RenderDish dish={props.dish} />
