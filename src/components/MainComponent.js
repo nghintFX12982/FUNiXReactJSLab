@@ -6,10 +6,6 @@ import Contact from "./ContactComponent";
 import DishDetail from "./DishdetailComponent";
 import React, { Component } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import { DISHES } from "../shared/dishes";
-import { COMMENTS } from "../shared/comments";
-import { PROMOTIONS } from "../shared/promotions";
-import { LEADERS } from "../shared/leaders";
 
 class Main extends Component {
   constructor(props) {
