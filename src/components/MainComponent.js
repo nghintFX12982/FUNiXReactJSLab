@@ -9,6 +9,7 @@ import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
 const mapStatetoProps = (state) => {
+  console.log(this);
   return {
     dishes: state.dishes,
     comments: state.comments,
@@ -20,12 +21,15 @@ const mapStatetoProps = (state) => {
 class Main extends Component {
   constructor(props) {
     super(props);
+    // console.log(this);
   }
 
   render() {
+    console.log(this);
     // This component will be called if path matches "/home"
     // Home component is imported from HomeComponent.js
     const HomPage = () => {
+      // console.log(this);
       return (
         <Home
           dish={this.props.dishes.filter((dish) => dish.featured)[0]}
@@ -38,6 +42,7 @@ class Main extends Component {
     // This component will be called if path matches "/menu/:dishid"
     // DishDetail is imported from DishdetailComponent.js
     const DishWithId = ({ match }) => {
+      // console.log(this);
       return (
         <DishDetail
           dish={
@@ -55,6 +60,7 @@ class Main extends Component {
 
     return (
       <div>
+        {console.log(this)}
         <Header />
         <Switch>
           <Route path="/home" component={HomPage} />
