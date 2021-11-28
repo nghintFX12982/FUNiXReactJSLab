@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import {
-  Nav,
   Navbar,
   NavbarBrand,
+  Nav,
   NavbarToggler,
   Collapse,
   NavItem,
@@ -13,8 +13,8 @@ import {
   ModalBody,
   Form,
   FormGroup,
-  Label,
   Input,
+  Label,
 } from "reactstrap";
 import { NavLink } from "react-router-dom";
 
@@ -38,12 +38,12 @@ class Header extends Component {
     this.setState({
       isNavOpen: !this.state.isNavOpen,
     });
-    // console.log(this);
   }
 
   toggleModal() {
-    this.setState({ isModalOpen: !this.isModalOpen });
-    // console.log(this);
+    this.setState({
+      isModalOpen: !this.state.isModalOpen,
+    });
   }
 
   handleLogin(event) {
@@ -62,7 +62,7 @@ class Header extends Component {
 
   render() {
     return (
-      <div>
+      <React.Fragment>
         {/* Navbar Section with React Route */}
         {/* Navbar will expand from medium screen */}
         {/* mr-auto will add margin right as much as necessary */}
@@ -163,13 +163,13 @@ class Header extends Component {
                   Remember me
                 </Label>
               </FormGroup>
-              <Button type="submit" value="submit" className="primary">
+              <Button type="submit" value="submit" color="primary">
                 Login
               </Button>
             </Form>
           </ModalBody>
         </Modal>
-      </div>
+      </React.Fragment>
     );
   }
 }
