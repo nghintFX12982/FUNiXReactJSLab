@@ -34,16 +34,16 @@ class Header extends Component {
   }
 
   // Annonymous function not need bind method
+  // This function will change value of isNavOpen between true-false when toggler icon is clicked
   toggleNav() {
     this.setState({
       isNavOpen: !this.state.isNavOpen,
     });
-    // console.log(this);
   }
 
+  // This function will change value of isModalOpen between true-false when modal is toggled
   toggleModal() {
     this.setState({ isModalOpen: !this.state.isModalOpen });
-    // console.log(this);
   }
 
   handleLogin(event) {
@@ -105,6 +105,7 @@ class Header extends Component {
                   </NavLink>
                 </NavItem>
               </Nav>
+              {/* Modal form will show when click Login button */}
               <Nav className="ml-auto" navbar>
                 <NavItem>
                   <Button outline onClick={this.toggleModal}>
@@ -115,7 +116,7 @@ class Header extends Component {
             </Collapse>
           </div>
         </Navbar>
-        {/* Jumbotron Section */}
+        {/* ----- Jumbotron Section ----- */}
         <Jumbotron>
           <div className="container">
             <div className="row row-header">
@@ -130,10 +131,11 @@ class Header extends Component {
             </div>
           </div>
         </Jumbotron>
-        {/* Modal Section */}
+        {/* ----- Modal Section ----- */}
         <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
           <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
           <ModalBody>
+            {/* Uncontrolled Form */}
             <Form onSubmit={this.handleLogin}>
               <FormGroup>
                 <Label htmlFor="username">Username</Label>
