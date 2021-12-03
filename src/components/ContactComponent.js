@@ -163,7 +163,7 @@ class Contact extends Component {
         </div>
         {/* When submiting change in iput value, handleInputChange() will be triggered to update state  */}
         {/* Then, handleSubmit() will be triggered to console log result -> use JSON.stringify() to show object  */}
-        {/* Feedback Section */}
+        {/* ------ Feedback Section ----- */}
         <div className="row row-content">
           <div className="col-12">
             <h3>Send us Your FeedBack</h3>
@@ -187,7 +187,6 @@ class Contact extends Component {
                     name="firstname"
                     placeholder="First Name"
                     value={this.state.firstname}
-                    // TODO:
                     valid={errors.firstname === ""}
                     invalid={errors.firstname !== ""}
                     onBlur={this.handleBlur("firstname")}
