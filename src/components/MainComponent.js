@@ -7,9 +7,9 @@ import DishDetail from "./DishdetailComponent";
 import React, { Component } from "react";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+import { addComment } from "../redux/ActionCreators";
 
 const mapStatetoProps = (state) => {
-  console.log(this);
   return {
     dishes: state.dishes,
     comments: state.comments,
@@ -18,14 +18,17 @@ const mapStatetoProps = (state) => {
   };
 };
 
+const mapDispatchtoProps = (dispatch) => ({
+  addComment: (dishId, rating, author, comment) =>
+    dispatch(addComment(dishId, rating, author, comment)),
+});
+
 class Main extends Component {
   constructor(props) {
     super(props);
-    // console.log(this);
   }
 
   render() {
-    console.log(this);
     // This component will be called if path matches "/home"
     // Home component is imported from HomeComponent.js
     const HomPage = () => {
@@ -54,6 +57,7 @@ class Main extends Component {
           comments={this.props.comments.filter(
             (comment) => comment.dishId === parseInt(match.params.dishId, 10)
           )}
+          addComment={this.props.addComment}
         />
       );
     };
@@ -81,4 +85,4 @@ class Main extends Component {
   }
 }
 
-export default withRouter(connect(mapStatetoProps)(Main));
+export default withRouter(connect(mapStatetoProps, mapDispatchtoProps)(Main));
