@@ -31,13 +31,14 @@ function RenderCard({ item, isLoading, errMess }) {
 }
 
 function Home(props) {
+  console.log(props);
   return (
     <div className="container">
       <div className="row align-items-start">
         <div className="col-12 col-md m-1">
           <RenderCard
             item={props.dish}
-            isLoading={props.dishesLoading}
+            isLoading={props.dishLoading}
             errMess={props.dishesErrMess}
           />
         </div>

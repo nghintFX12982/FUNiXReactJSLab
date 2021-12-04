@@ -27,11 +27,13 @@ const mapDispatchtoProps = (dispatch) => ({
 });
 
 class Main extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
+  constructor(props) {
+    console.log("constructor");
+    super(props);
+  }
 
   componentDidMount() {
+    console.log("componentDidMount");
     this.props.fetchDishes();
   }
 
@@ -39,7 +41,7 @@ class Main extends Component {
     // This component will be called if path matches "/home"
     // Home component is imported from HomeComponent.js
     const HomePage = () => {
-      // console.log(props);
+      console.log(this.props);
       return (
         <Home
           dish={this.props.dishes.dishes.filter((dish) => dish.featured)[0]}
@@ -74,6 +76,7 @@ class Main extends Component {
 
     return (
       <div>
+        {console.log("return")}
         <Header />
         <Switch>
           <Route path="/home" component={HomePage} />
