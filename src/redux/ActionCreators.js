@@ -12,21 +12,22 @@ export const addComment = (dishId, rating, author, comment) => ({
 });
 
 export const fetchDishes = () => (dispatch) => {
-  dispatch(dishesLoading(true));
+  console.log("fetchDishes");
+  dispatch(dishesLoading());
   setTimeout(() => {
     dispatch(addDishes(DISHES));
   }, 1000);
 };
 
 export const dishesLoading = () => {
-  console.log("loading");
+  console.log("dish loading");
   return {
     type: ActionTypes.DISHES_LOADING,
   };
 };
 
 export const dishesFailed = (errmess) => {
-  console.log("fail");
+  console.log("dish fail");
   return {
     type: ActionTypes.DISHES_FAILED,
     payload: errmess,

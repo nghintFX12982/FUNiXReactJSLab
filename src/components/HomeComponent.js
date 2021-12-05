@@ -11,10 +11,13 @@ import { Loading } from "./LoadingComponent";
 
 function RenderCard({ item, isLoading, errMess }) {
   if (isLoading) {
+    console.log("HomeComponent - render: is loading");
     return <Loading />;
   } else if (errMess) {
+    console.log("HomeComponent - render: error message");
     return <h4>{errMess}</h4>;
   } else {
+    console.log("HomeComponent - render: card component");
     return (
       <Card>
         <CardImg src={item.image} alt={item.name} />
@@ -31,7 +34,7 @@ function RenderCard({ item, isLoading, errMess }) {
 }
 
 function Home(props) {
-  console.log(props);
+  console.log("HomeComponent");
   return (
     <div className="container">
       <div className="row align-items-start">

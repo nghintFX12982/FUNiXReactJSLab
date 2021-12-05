@@ -11,6 +11,7 @@ import { addComment, fetchDishes } from "../redux/ActionCreators";
 import { actions } from "react-redux-form";
 
 const mapStatetoProps = (state) => {
+  console.log("mapStatetoProps");
   return {
     dishes: state.dishes,
     comments: state.comments,
@@ -19,25 +20,29 @@ const mapStatetoProps = (state) => {
   };
 };
 
-const mapDispatchtoProps = (dispatch) => ({
-  addComment: (dishId, rating, author, comment) =>
-    dispatch(addComment(dishId, rating, author, comment)),
-  fetchDishes: () => {
-    dispatch(fetchDishes());
-  },
-  resetFeedbackForm: () => {
-    dispatch(actions.reset("feedback"));
-  },
-});
+const mapDispatchtoProps = (dispatch) => {
+  console.log("mapDispatchtoProps");
+  return {
+    addComment: (dishId, rating, author, comment) =>
+      dispatch(addComment(dishId, rating, author, comment)),
+    fetchDishes: () => {
+      console.log("fetchDishes()");
+      dispatch(fetchDishes());
+    },
+    resetFeedbackForm: () => {
+      dispatch(actions.reset("feedback"));
+    },
+  };
+};
 
 class Main extends Component {
   constructor(props) {
-    console.log("constructor");
+    console.log("MainComponent - constructor");
     super(props);
   }
 
   componentDidMount() {
-    console.log("componentDidMount");
+    console.log("MainComponent - componentDidMount");
     this.props.fetchDishes();
   }
 
@@ -45,7 +50,7 @@ class Main extends Component {
     // This component will be called if path matches "/home"
     // Home component is imported from HomeComponent.js
     const HomePage = () => {
-      console.log(this.props);
+      console.log("MainComponent - Route: /home - HomePageComponent");
       return (
         <Home
           dish={this.props.dishes.dishes.filter((dish) => dish.featured)[0]}
@@ -80,7 +85,7 @@ class Main extends Component {
 
     return (
       <div>
-        {console.log("return")}
+        {console.log("MainComponent - render method -> return")}
         <Header />
         <Switch>
           <Route path="/home" component={HomePage} />
@@ -107,4 +112,7 @@ class Main extends Component {
   }
 }
 
+console.log(
+  "MainComponent - withRouter(connect(mapStatetoProps, mapDispatchtoProps)(Main))"
+);
 export default withRouter(connect(mapStatetoProps, mapDispatchtoProps)(Main));

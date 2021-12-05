@@ -9,7 +9,7 @@ const store = configureStore();
 
 class App extends Component {
   render() {
-    // console.log(this);
+    console.log("App Component");
     return (
       <Provider store={store}>
         <BrowserRouter>
