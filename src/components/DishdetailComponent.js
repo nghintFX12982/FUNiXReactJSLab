@@ -19,12 +19,13 @@ import {
 import { Link } from "react-router-dom";
 import dateFormat, { masks } from "dateformat";
 import { Loading } from "./LoadingComponent";
+import { baseUrl } from "../shared/baseUrl";
 
 // Presentation Component
 function RenderDish({ dish }) {
   return (
     <Card>
-      <CardImg top src={dish.image} alt={dish.description} />
+      <CardImg top src={baseUrl + dish.image} alt={dish.description} />
       <CardBody>
         <CardTitle>{dish.name}</CardTitle>
         <CardText>{dish.description}</CardText>
