@@ -20,17 +20,26 @@ import { Link } from "react-router-dom";
 import dateFormat, { masks } from "dateformat";
 import { Loading } from "./LoadingComponent";
 import { baseUrl } from "../shared/baseUrl";
+import { FadeTransform, Fade, Stagger } from "react-animation-components";
 
 // Presentation Component
 function RenderDish({ dish }) {
   return (
-    <Card>
-      <CardImg top src={baseUrl + dish.image} alt={dish.description} />
-      <CardBody>
-        <CardTitle>{dish.name}</CardTitle>
-        <CardText>{dish.description}</CardText>
-      </CardBody>
-    </Card>
+    // React Animation Component
+    <FadeTransform
+      in
+      transformProps={{
+        exitTransform: "scale(0.5) translateY(-50%)",
+      }}
+    >
+      <Card>
+        <CardImg top src={baseUrl + dish.image} alt={dish.description} />
+        <CardBody>
+          <CardTitle>{dish.name}</CardTitle>
+          <CardText>{dish.description}</CardText>
+        </CardBody>
+      </Card>
+    </FadeTransform>
   );
 }
 
@@ -38,14 +47,19 @@ function RenderComments({ comments, postComment, dishId }) {
   return (
     <div>
       <h4>Comments</h4>
-      {comments.map((comment) => (
-        <ul className="list-unstyled">
-          <li>{comment.comment}</li>
-          <li>
-            --{comment.author}, {dateFormat(comment.date, "mmm dd, yyyy")}
-          </li>
-        </ul>
-      ))}
+      {/* React Animation Component */}
+      <Stagger in>
+        {comments.map((comment) => (
+          <Fade in>
+            <ul className="list-unstyled">
+              <li>{comment.comment}</li>
+              <li>
+                --{comment.author}, {dateFormat(comment.date, "mmm dd, yyyy")}
+              </li>
+            </ul>
+          </Fade>
+        ))}
+      </Stagger>
       <CommentForm dishId={dishId} postComment={postComment} />
     </div>
   );

@@ -9,6 +9,7 @@ import {
 } from "reactstrap";
 import { Loading } from "./LoadingComponent";
 import { baseUrl } from "../shared/baseUrl";
+import { FadeTransform } from "react-animation-components";
 
 function RenderCard({ item, isLoading, errMess }) {
   console.log(item);
@@ -21,16 +22,24 @@ function RenderCard({ item, isLoading, errMess }) {
   } else {
     console.log("HomeComponent - render: card component");
     return (
-      <Card>
-        <CardImg src={baseUrl + item.image} alt={item.name} />
-        <CardBody>
-          <CardTitle>{item.name}</CardTitle>
-          {item.designation ? (
-            <CardSubtitle>{item.designation}</CardSubtitle>
-          ) : null}
-          <CardText>{item.description}</CardText>
-        </CardBody>
-      </Card>
+      // React Animation Component
+      <FadeTransform
+        in
+        transformProps={{
+          exitTransform: "scale(0.5) translateY(-50%)",
+        }}
+      >
+        <Card>
+          <CardImg src={baseUrl + item.image} alt={item.name} />
+          <CardBody>
+            <CardTitle>{item.name}</CardTitle>
+            {item.designation ? (
+              <CardSubtitle>{item.designation}</CardSubtitle>
+            ) : null}
+            <CardText>{item.description}</CardText>
+          </CardBody>
+        </Card>
+      </FadeTransform>
     );
   }
 }
