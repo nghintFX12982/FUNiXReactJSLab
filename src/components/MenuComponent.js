@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import { Media } from "reactstrap";
 import {
   Card,
   CardImg,
@@ -17,6 +16,7 @@ class Menu extends Component {
     };
   }
 
+  // In function componenet, use useState hook & setSelectedDish instead setState
   onDishSelect(dish) {
     this.setState({ selectedDish: dish });
   }
@@ -38,6 +38,7 @@ class Menu extends Component {
   }
 
   render() {
+    // In class component, use this.props instead only props
     const menu = this.props.dishes.map((dish) => {
       return (
         <div className="col-12 col-md-5 m-1">
